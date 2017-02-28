@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>成员变量与属性 | 光之晨曦</title>
+    <title>iOS中英文混合排序 | 光之晨曦</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="tengtai">
     
 
-    <meta name="keywords" content="Carthage">
-    <meta name="description" content="成员变量与属性">
+    <meta name="keywords" content="iOS中英文混合排序">
+    <meta name="description" content="iOS中英文混合排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="成员变量与属性">
-<meta property="og:url" content="http://www.tengtai.tk/2015/08/03/2015-08-03-成员变量与属性/index.html">
+<meta property="og:title" content="iOS中英文混合排序">
+<meta property="og:url" content="http://www.tengtai.tk/2017/02/28/2017-02-28-iOS中英文混合排序/index.html">
 <meta property="og:site_name" content="光之晨曦">
-<meta property="og:description" content="成员变量与属性">
-<meta property="og:updated_time" content="2017-02-28T14:31:42.000Z">
+<meta property="og:description" content="iOS中英文混合排序">
+<meta property="og:updated_time" content="2017-02-28T16:11:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="成员变量与属性">
-<meta name="twitter:description" content="成员变量与属性">
+<meta name="twitter:title" content="iOS中英文混合排序">
+<meta name="twitter:description" content="iOS中英文混合排序">
 
     
     <link rel="alternative" href="/atom.xml" title="光之晨曦" type="application/atom+xml">
@@ -80,14 +80,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/08/03/2015-08-03-成员变量与属性/" title="成员变量与属性" itemprop="url">成员变量与属性</a>
+      <a href="/2017/02/28/2017-02-28-iOS中英文混合排序/" title="iOS中英文混合排序" itemprop="url">iOS中英文混合排序</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="tengtai" target="_blank" itemprop="author">tengtai</a>
 		
   <p class="article-time">
-    <time datetime="2015-08-02T16:00:00.000Z" itemprop="datePublished"> Published 2015-08-03</time>
+    <time datetime="2017-02-27T16:00:00.000Z" itemprop="datePublished"> Published 2017-02-28</time>
     
   </p>
 </header>
@@ -96,16 +96,22 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性"><span class="toc-number">2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">3.</span> <span class="toc-text">说明</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#牛刀小试"><span class="toc-number">1.</span> <span class="toc-text">牛刀小试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发现问题"><span class="toc-number">2.</span> <span class="toc-text">发现问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渐入佳境"><span class="toc-number">3.</span> <span class="toc-text">渐入佳境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#守得云开见月明"><span class="toc-number">4.</span> <span class="toc-text">守得云开见月明</span></a></li></ol>
 		
 		</div>
 		
-		<p>最近在公司的项目里面发现了很多类成员变量与属性同时出现，感觉很混乱，之前一直是在用属性<code>@property</code>声明变量，所以对两者之间的区别比较困惑，于是便仔细的探索了一番。</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>先来看一看那些让人感觉乱糟糟的成员变量与属性共用的代码吧。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@interface SearchInfoView()&lt;UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,SearchCellDelegate&gt; </div><div class="line">&#123;</div><div class="line">    UIImageView *_backGroundImg;</div><div class="line">    NSMutableArray *_oldSearchArray; </div><div class="line">    UIButton *_rightBtn;</div><div class="line">&#125;</div><div class="line">@property(nonatomic, strong)UITableView *historyTableView;</div><div class="line">@property(nonatomic, assign)UIViewController *currentViewControll;</div><div class="line">@end</div></pre></td></tr></table></figure></p>
-<p>真的很乱，对于我来说真的是无法忍受，但是他们之间到底有何不同呢？</p>
-<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>先来说一下属性<code>@property</code>，属性可以自己生成<code>getter</code>和<code>setter</code>方法，并生成一个待下划线的成员变量，当然你还可以通过<code>@synthesize</code>关键字将实例变量重命名。在ARC下对象的存在与否全看有没有强指针的引用，我们无需去考虑计数器了，配合一些如：<code>strong</code>, <code>weak</code>, <code>rassign</code>等关键字，我们不用再去太关心内存。</p>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>iOS 5更新之后，苹果是建议以以下的方式来使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@interface MyViewController :UIViewController</div><div class="line">@property (nonatomic, retain) UIButton *myButton;</div><div class="line">@end</div></pre></td></tr></table></figure></p>
-<p>我看了一些著名的开源框架如：<code>AFNetworking</code>以及苹果官方代码来看，基本上很少使用成员变量了，所以我们平时尽可能的使用<code>@property</code>，在使用时还是很方便的。</p>
+		<p>听起来中英文排序貌似很简单，直接使用数组或者字符串相对应的方法不就行了嘛，但是我真正去做的时候确实发现了一些问题。</p>
+<h2 id="牛刀小试"><a href="#牛刀小试" class="headerlink" title="牛刀小试"></a>牛刀小试</h2><p>首先我想到的是用这种方法，直接看代码吧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">NSArray *array = @[@&quot;俺家&quot;, @&quot;阿尔卑斯&quot;, @&quot;上海&quot;, @&quot;AJ&quot;, @&quot;北京&quot;];</div><div class="line">NSArray *sortArray = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) &#123;</div><div class="line">        return [obj1 compare:obj2 options:NSCaseInsensitiveSearch];</div><div class="line">     &#125;];</div></pre></td></tr></table></figure>
+<p>然后运行结果并没有达到预期的目的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">结果：</div><div class="line">AJ</div><div class="line">上海</div><div class="line">俺家</div><div class="line">北京</div><div class="line">阿尔卑斯</div></pre></td></tr></table></figure>
+<h2 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h2><p>为什么会这样呢？后来查资料发现，汉字如果使用这种方式的排序，并不是按照首字母进行排序的，也就是说这个方法用来排列纯字母的是没问题的，汉字是不行的。看了compare方法的介绍，我发现了一条重要的信息。</p>
+<p><em>When working with text that’s presented to the user, use the localizedStandardCompare: instead, or use the compare:options:range:locale: method, passing the user’s locale.</em></p>
+<p>这段话大概意思是如果用户设置了手机的语言，则需要使用<code>localizedStandardCompare</code>，好吧，那就换种办法试一试。</p>
+<h2 id="渐入佳境"><a href="#渐入佳境" class="headerlink" title="渐入佳境"></a>渐入佳境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">NSArray *array = @[@&quot;俺家&quot;, @&quot;阿尔卑斯&quot;, @&quot;上海&quot;, @&quot;AJ&quot;, @&quot;北京&quot;];</div><div class="line">NSArray *sortArray = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) &#123;</div><div class="line">   return [obj1 localizedCompare:obj2];</div><div class="line">&#125;];</div><div class="line">for (NSString *str in sortArray) &#123;</div><div class="line">   NSLog(@&quot;%@\n&quot;, str);</div><div class="line">&#125;</div><div class="line"></div><div class="line">结果：</div><div class="line">阿尔卑斯</div><div class="line">俺家</div><div class="line">北京</div><div class="line">上海</div><div class="line">AJ</div></pre></td></tr></table></figure>
+<p>虽然这次排序依然是不正确的，但是可以看到其中的汉字已经正确了，说明这个方法并不能兼容汉字和字母的排序。那么就只能通过取汉字拼音的首字母去比较了，这样才能和其他字母进行比较。后来我找到了这种解决办法。</p>
+<h2 id="守得云开见月明"><a href="#守得云开见月明" class="headerlink" title="守得云开见月明"></a>守得云开见月明</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">NSInteger sortObjects(id obj1, id obj2,void *context)</div><div class="line">&#123;</div><div class="line">    NSMutableString * str1 = [[NSMutableString alloc] initWithString:obj1];</div><div class="line">    if (CFStringTransform((__bridge CFMutableStringRef)str1, 0, kCFStringTransformMandarinLatin, NO)) &#123;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    NSMutableString * str2 = [[NSMutableString alloc] initWithString:obj2];</div><div class="line">    if (CFStringTransform((__bridge CFMutableStringRef)str2, 0, kCFStringTransformMandarinLatin, NO)) &#123;</div><div class="line">    &#125;</div><div class="line">    return [str1 localizedCompare:str2];</div><div class="line">&#125;</div><div class="line"></div><div class="line">NSArray *array = @[@&quot;俺家&quot;, @&quot;阿尔卑斯&quot;, @&quot;上海&quot;, @&quot;AJ&quot;, @&quot;北京&quot;];</div><div class="line">NSArray *sortArray = [array sortedArrayUsingFunction:sortObjects context:NULL];</div><div class="line">for (NSString *str in sortArray) &#123;</div><div class="line">   NSLog(@&quot;%@\n&quot;, str);</div><div class="line">&#125;</div><div class="line"></div><div class="line">结果：</div><div class="line">阿尔卑斯</div><div class="line">AJ</div><div class="line">俺家</div><div class="line">北京</div><div class="line">上海</div></pre></td></tr></table></figure>
+<p>这次终于是正确了，上面的sortObjects函数是将汉字转成拼音，字母不做任何处理，这样再运用第二种方法的比较就可以了。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -128,7 +134,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://www.tengtai.tk/2015/08/03/2015-08-03-成员变量与属性/" data-title="成员变量与属性 | 光之晨曦" data-tsina="null" class="share clearfix">
+	  <div data-url="http://www.tengtai.tk/2017/02/28/2017-02-28-iOS中英文混合排序/" data-title="iOS中英文混合排序 | 光之晨曦" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -141,19 +147,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/08/03/2015-08-03-weakSelf与strongSelf/" title="weakSelf与strongSelf">
-  <strong>上一篇：</strong><br/>
-  <span>
-  weakSelf与strongSelf</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/06/20/2015-06-20-UIColor进制转换/"  title=" UIColor与十六进制字符串互转（整理）">
+<a href="/2017/01/23/2017-01-23-快速了解JavaScript中的函数/"  title="快速了解JavaScript中的函数">
  <strong>下一篇：</strong><br/> 
- <span> UIColor与十六进制字符串互转（整理）
+ <span>快速了解JavaScript中的函数
 </span>
 </a>
 </div>
@@ -162,7 +160,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/08/03/2015-08-03-成员变量与属性/" data-title="成员变量与属性" data-url="http://www.tengtai.tk/2015/08/03/2015-08-03-成员变量与属性/"></div>
+	<div class="ds-thread" data-thread-key="2017/02/28/2017-02-28-iOS中英文混合排序/" data-title="iOS中英文混合排序" data-url="http://www.tengtai.tk/2017/02/28/2017-02-28-iOS中英文混合排序/"></div>
 </section>
 
 
@@ -172,7 +170,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性"><span class="toc-number">2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">3.</span> <span class="toc-text">说明</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#牛刀小试"><span class="toc-number">1.</span> <span class="toc-text">牛刀小试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发现问题"><span class="toc-number">2.</span> <span class="toc-text">发现问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渐入佳境"><span class="toc-number">3.</span> <span class="toc-text">渐入佳境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#守得云开见月明"><span class="toc-number">4.</span> <span class="toc-text">守得云开见月明</span></a></li></ol>
  
   </div>
 
