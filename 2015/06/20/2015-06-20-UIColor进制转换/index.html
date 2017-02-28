@@ -93,6 +93,13 @@
 </header>
 	<div class="article-content">
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			
+		
+		</div>
+		
 		<p>因为项目中用到了UIColor与十六进制字符串互转，于是就整理了一下，以供参阅。</p>
 <p>###UIColor转十六进制字符串<br>    方法一：经过测试发现部分颜色会转化为#fffff（五个f），转化残缺导致最后颜色无法还原，不推荐使用。</p>
 <pre><code>// UIColor转#ffffff格式的字符串
@@ -257,6 +264,13 @@ return [NSString stringWithFormat:@&quot;#%x%x%x&quot;, (int)((CGColorGetCompone
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ 
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -425,6 +439,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });

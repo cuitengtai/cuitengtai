@@ -93,6 +93,13 @@
 </header>
 	<div class="article-content">
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			
+		
+		</div>
+		
 		<p>最近在公司的项目里面发现了很多类成员变量与属性同时出现，感觉很混乱，之前一直是在用属性<code>@property</code>声明变量，所以对两者之间的区别比较困惑，于是便仔细的探索了一番。</p>
 <p>##开始<br>先来看一看那些让人感觉乱糟糟的成员变量与属性共用的代码吧。</p>
 <pre><code>@interface SearchInfoView()&lt;UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,SearchCellDelegate&gt; 
@@ -169,6 +176,13 @@
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ 
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -337,6 +351,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });

@@ -93,6 +93,13 @@
 </header>
 	<div class="article-content">
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			
+		
+		</div>
+		
 		<p>对于经常使用Mac终端的人而言，需要牢记大量复杂的命令，而开源的<code>zsh</code>则帮助用户减少了大脑的负荷，增加了使用的便捷性，而且还有许多主题可以随意更换，用起来更加的爽了。所以，赶紧换掉那个陈旧的<code>bash</code>吧.</p>
 <p>##什么是shell？<br><code>shell</code>是Linux/Unix的一个外壳，你理解成衣服也行。它负责外界与内核的交互，接收用户或其他应用程序的命令，然后把这些命令转化成内核能理解的语言，传给内核，内核是真正干活的，干完之后再把结果返回用户或应用程序。所以，工具用着不爽，当然就要更换一个效率更高的，功能更强大的，而<code>zsh</code>更是被誉为<code>终端的终结者</code>。</p>
 <p>想知道自己的电脑支持几种<code>shell</code>，可以用下面这个命令：</p>
@@ -218,6 +225,13 @@ apple.zsh-theme               lukerandall.zsh-theme
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ 
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -386,6 +400,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });

@@ -93,6 +93,13 @@
 </header>
 	<div class="article-content">
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			
+		
+		</div>
+		
 		<p>谈到iOS的管理第三方类库的依赖工具，大家可能会先想到<a href="https://github.com/cocoapods/cocoapods" target="_blank" rel="external">CocoaPods</a>，<code>CocoaPods</code>支持丰富的第三方库，文档等，是iOS开发者有力的开发工具，但是其优缺点非常的明显。</p>
 <p>优点：</p>
 <ul>
@@ -214,6 +221,13 @@ xxx.xcodeproj
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ 
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -382,6 +396,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });

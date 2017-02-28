@@ -93,6 +93,13 @@
 </header>
 	<div class="article-content">
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			
+		
+		</div>
+		
 		<p>对于weakSelf与strongSelf的一些理解。</p>
 <p>##weakSelf<br><code>weakSelf</code>的作用是防止<code>retain</code>环的出现而导致内存泄露，通过将一方设置为弱引用就可防止<code>retain</code>环的出现。比如说像代理，一般都是用的<code>weak</code>来进行声明的，这样就是防止循环应用它的写法大致有这几种：</p>
 <pre><code>// 1.AFNetworking的写法
@@ -176,6 +183,13 @@ AFNetworkReachabilityStatusBlock callback = ^(AFNetworkReachabilityStatus status
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ 
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -344,6 +358,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });

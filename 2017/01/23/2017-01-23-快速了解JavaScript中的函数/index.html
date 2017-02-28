@@ -93,6 +93,13 @@
 </header>
 	<div class="article-content">
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#快速了解JavaScript中的函数"><span class="toc-number">1.</span> <span class="toc-text">快速了解JavaScript中的函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-普通函数"><span class="toc-number">1.1.</span> <span class="toc-text">1.普通函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-普通函数示例"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 普通函数示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-同名函数覆盖"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 同名函数覆盖,</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-arguments对象"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 arguments对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-“undefined”"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 “undefined”</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-匿名函数"><span class="toc-number">1.2.</span> <span class="toc-text">2.匿名函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-变量匿名函数"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 变量匿名函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-无名称匿名函数"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 无名称匿名函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-闭包函数"><span class="toc-number">1.3.</span> <span class="toc-text">3.闭包函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-全局引用与局部引用"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 全局引用与局部引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-有参数的闭包函数"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 有参数的闭包函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-函数内变量共享"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 函数内变量共享</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-number">1.3.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
 		<p>最近在学习前端知识，顺手把一些东西记录下来，加深记忆，忘记的时候翻阅一下，温故而知新。</p>
 <h2 id="快速了解JavaScript中的函数"><a href="#快速了解JavaScript中的函数" class="headerlink" title="快速了解JavaScript中的函数"></a>快速了解JavaScript中的函数</h2><h3 id="1-普通函数"><a href="#1-普通函数" class="headerlink" title="1.普通函数"></a>1.普通函数</h3><h4 id="1-1-普通函数示例"><a href="#1-1-普通函数示例" class="headerlink" title="1.1 普通函数示例"></a>1.1 普通函数示例</h4><pre><code>function sayHello() {
     console.log(&quot;hello&quot;);
@@ -245,6 +252,13 @@ console.log(&quot;------------------------------------------------&quot;);
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#快速了解JavaScript中的函数"><span class="toc-number">1.</span> <span class="toc-text">快速了解JavaScript中的函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-普通函数"><span class="toc-number">1.1.</span> <span class="toc-text">1.普通函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-普通函数示例"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 普通函数示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-同名函数覆盖"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 同名函数覆盖,</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-arguments对象"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 arguments对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-“undefined”"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 “undefined”</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-匿名函数"><span class="toc-number">1.2.</span> <span class="toc-text">2.匿名函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-变量匿名函数"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 变量匿名函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-无名称匿名函数"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 无名称匿名函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-闭包函数"><span class="toc-number">1.3.</span> <span class="toc-text">3.闭包函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-全局引用与局部引用"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 全局引用与局部引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-有参数的闭包函数"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 有参数的闭包函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-函数内变量共享"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 函数内变量共享</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-number">1.3.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -413,6 +427,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });

@@ -98,6 +98,13 @@
 </header>
 	<div class="article-content">
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			
+		
+		</div>
+		
 		<p>在iOS7与iOS8中的UITableView的分割线的一些设置问题。</p>
 <p>##首先<br>在iOS中UITableView的分割线默认是左边距离边距15像素，但是有时我们需要它左对齐。<br>这是正常的分割线：</p>
 <p><img src="http://img17.poco.cn/mypoco/myphoto/20150826/20/17832875620150826201621072.png?375x689_130" alt="正常"></p>
@@ -200,6 +207,13 @@ self.tableView.layoutMargins = UIEdgeInsetsZero;
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ 
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -368,6 +382,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
