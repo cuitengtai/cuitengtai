@@ -4,23 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>iOS中英文混合排序 | 光之晨曦</title>
+    <title>iOS开发神器Reveal使用指南 | 光之晨曦</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="tengtai">
     
 
-    <meta name="keywords" content="iOS中英文混合排序">
-    <meta name="description" content="iOS中英文混合排序">
+    <meta name="keywords" content="iOS开发神器Reveal使用指南">
+    <meta name="description" content="iOS开发神器Reveal使用指南">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS中英文混合排序">
-<meta property="og:url" content="http://www.tengtai.tk/2017/02/28/2017-02-28-iOS中英文混合排序/index.html">
+<meta property="og:title" content="iOS开发神器Reveal使用指南">
+<meta property="og:url" content="http://www.tengtai.tk/2017/03/04/2017-03-04-iOS开发神器Reveal使用指南/index.html">
 <meta property="og:site_name" content="光之晨曦">
-<meta property="og:description" content="iOS中英文混合排序">
-<meta property="og:updated_time" content="2017-03-05T04:15:51.000Z">
+<meta property="og:description" content="iOS开发神器Reveal使用指南">
+<meta property="og:image" content="http://om6homgqk.bkt.clouddn.com/WX20170304-180852@2x.png">
+<meta property="og:image" content="http://om6homgqk.bkt.clouddn.com/断点.png">
+<meta property="og:image" content="http://om6homgqk.bkt.clouddn.com/编辑断点.png">
+<meta property="og:image" content="http://om6homgqk.bkt.clouddn.com/success.png">
+<meta property="og:image" content="http://om6homgqk.bkt.clouddn.com/点击去官网.png">
+<meta property="og:image" content="http://om6homgqk.bkt.clouddn.com/reveal解决问题指导.png">
+<meta property="og:image" content="http://om6homgqk.bkt.clouddn.com/最后一个错误.png">
+<meta property="og:image" content="http://om6homgqk.bkt.clouddn.com/hosts.png">
+<meta property="og:updated_time" content="2017-03-05T04:21:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS中英文混合排序">
-<meta name="twitter:description" content="iOS中英文混合排序">
+<meta name="twitter:title" content="iOS开发神器Reveal使用指南">
+<meta name="twitter:description" content="iOS开发神器Reveal使用指南">
+<meta name="twitter:image" content="http://om6homgqk.bkt.clouddn.com/WX20170304-180852@2x.png">
 
     
     <link rel="alternative" href="/atom.xml" title="光之晨曦" type="application/atom+xml">
@@ -80,14 +89,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/02/28/2017-02-28-iOS中英文混合排序/" title="iOS中英文混合排序" itemprop="url">iOS中英文混合排序</a>
+      <a href="/2017/03/04/2017-03-04-iOS开发神器Reveal使用指南/" title="iOS开发神器Reveal使用指南" itemprop="url">iOS开发神器Reveal使用指南</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="tengtai" target="_blank" itemprop="author">tengtai</a>
 		
   <p class="article-time">
-    <time datetime="2017-02-27T16:00:00.000Z" itemprop="datePublished"> Published 2017-02-28</time>
+    <time datetime="2017-03-03T16:00:00.000Z" itemprop="datePublished"> Published 2017-03-04</time>
     
   </p>
 </header>
@@ -96,22 +105,35 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#牛刀小试"><span class="toc-number">1.</span> <span class="toc-text">牛刀小试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发现问题"><span class="toc-number">2.</span> <span class="toc-text">发现问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渐入佳境"><span class="toc-number">3.</span> <span class="toc-text">渐入佳境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#守得云开见月明"><span class="toc-number">4.</span> <span class="toc-text">守得云开见月明</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接入自己项目"><span class="toc-number">2.</span> <span class="toc-text">接入自己项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过断点连接"><span class="toc-number">2.1.</span> <span class="toc-text">通过断点连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">3.</span> <span class="toc-text">最后</span></a></li></ol>
 		
 		</div>
 		
-		<p>听起来中英文排序貌似很简单，直接使用数组或者字符串相对应的方法不就行了嘛，但是我真正去做的时候确实发现了一些问题。<br><a id="more"></a></p>
-<h2 id="牛刀小试"><a href="#牛刀小试" class="headerlink" title="牛刀小试"></a>牛刀小试</h2><p>首先我想到的是用这种方法，直接看代码吧。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">NSArray *array = @[@&quot;俺家&quot;, @&quot;阿尔卑斯&quot;, @&quot;上海&quot;, @&quot;AJ&quot;, @&quot;北京&quot;];</div><div class="line">NSArray *sortArray = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) &#123;</div><div class="line">        return [obj1 compare:obj2 options:NSCaseInsensitiveSearch];</div><div class="line">     &#125;];</div></pre></td></tr></table></figure>
-<p>然后运行结果并没有达到预期的目的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">结果：</div><div class="line">AJ</div><div class="line">上海</div><div class="line">俺家</div><div class="line">北京</div><div class="line">阿尔卑斯</div></pre></td></tr></table></figure>
-<h2 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h2><p>为什么会这样呢？后来查资料发现，汉字如果使用这种方式的排序，并不是按照首字母进行排序的，也就是说这个方法用来排列纯字母的是没问题的，汉字是不行的。看了compare方法的介绍，我发现了一条重要的信息。</p>
-<p><em>When working with text that’s presented to the user, use the localizedStandardCompare: instead, or use the compare:options:range:locale: method, passing the user’s locale.</em></p>
-<p>这段话大概意思是如果用户设置了手机的语言，则需要使用<code>localizedStandardCompare</code>，好吧，那就换种办法试一试。</p>
-<h2 id="渐入佳境"><a href="#渐入佳境" class="headerlink" title="渐入佳境"></a>渐入佳境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">NSArray *array = @[@&quot;俺家&quot;, @&quot;阿尔卑斯&quot;, @&quot;上海&quot;, @&quot;AJ&quot;, @&quot;北京&quot;];</div><div class="line">NSArray *sortArray = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) &#123;</div><div class="line">   return [obj1 localizedCompare:obj2];</div><div class="line">&#125;];</div><div class="line">for (NSString *str in sortArray) &#123;</div><div class="line">   NSLog(@&quot;%@\n&quot;, str);</div><div class="line">&#125;</div><div class="line"></div><div class="line">结果：</div><div class="line">阿尔卑斯</div><div class="line">俺家</div><div class="line">北京</div><div class="line">上海</div><div class="line">AJ</div></pre></td></tr></table></figure>
-<p>虽然这次排序依然是不正确的，但是可以看到其中的汉字已经正确了，说明这个方法并不能兼容汉字和字母的排序。那么就只能通过取汉字拼音的首字母去比较了，这样才能和其他字母进行比较。后来我找到了这种解决办法。</p>
-<h2 id="守得云开见月明"><a href="#守得云开见月明" class="headerlink" title="守得云开见月明"></a>守得云开见月明</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">NSInteger sortObjects(id obj1, id obj2,void *context)</div><div class="line">&#123;</div><div class="line">    NSMutableString * str1 = [[NSMutableString alloc] initWithString:obj1];</div><div class="line">    if (CFStringTransform((__bridge CFMutableStringRef)str1, 0, kCFStringTransformMandarinLatin, NO)) &#123;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    NSMutableString * str2 = [[NSMutableString alloc] initWithString:obj2];</div><div class="line">    if (CFStringTransform((__bridge CFMutableStringRef)str2, 0, kCFStringTransformMandarinLatin, NO)) &#123;</div><div class="line">    &#125;</div><div class="line">    return [str1 localizedCompare:str2];</div><div class="line">&#125;</div><div class="line"></div><div class="line">NSArray *array = @[@&quot;俺家&quot;, @&quot;阿尔卑斯&quot;, @&quot;上海&quot;, @&quot;AJ&quot;, @&quot;北京&quot;];</div><div class="line">NSArray *sortArray = [array sortedArrayUsingFunction:sortObjects context:NULL];</div><div class="line">for (NSString *str in sortArray) &#123;</div><div class="line">   NSLog(@&quot;%@\n&quot;, str);</div><div class="line">&#125;</div><div class="line"></div><div class="line">结果：</div><div class="line">阿尔卑斯</div><div class="line">AJ</div><div class="line">俺家</div><div class="line">北京</div><div class="line">上海</div></pre></td></tr></table></figure>
-<p>这次终于是正确了，上面的sortObjects函数是将汉字转成拼音，字母不做任何处理，这样再运用第二种方法的比较就可以了。</p>
+		<blockquote>
+<p>作为一名iOS开发者，想必Reveal大家都是知道的。它提供的视图层次浏览功能，给开发过程中定位错误带来了极大的便利，甚至可以通过越狱设备逆向别人的APP，浏览其他APP的视图结构。自从前阵子升级到Xcode8.x之后，Reveal1.6.3就再也用不了了，起初以为是系统兼容性问题，后来等到了Reveal2这个蛋疼的问题依然没解决，最近总算是成功的解决了这个问题，现在Reveal7已经出来了，不得不说，这个版本号真的是醉了，跟坐火箭一样。Reveal的官网在<a href="https://revealapp.com/" target="_blank" rel="external">这里</a>，由于Reveal版本号更新太快，不同版本之间的接入操作会有一些差异，如果使用中遇到麻烦，一定要找对应版本的解决办法，这里就以Reveal4为例介绍一下使用步骤。</p>
+</blockquote>
+<p><img src="http://om6homgqk.bkt.clouddn.com/WX20170304-180852@2x.png" alt="Reveal"></p>
+<a id="more"></a>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Reveal可以免费试用14天，如果你不差钱可以买<a href="https://revealapp.com/buy/" target="_blank" rel="external">正版</a>支持一下，也就是一年59刀。当然了，如果你不打算这样做，可以去下载<a href="http://xclient.info/s/reveal.html" target="_blank" rel="external">破解版</a>。</p>
+<h2 id="接入自己项目"><a href="#接入自己项目" class="headerlink" title="接入自己项目"></a>接入自己项目</h2><p>Reveal可以接入自己的项目，也可以通过逆向查看其它APP，这里主要介绍Reveal如何连接模拟器及真机。<br>Reveal接入项目有三种方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.通过CocoaPods导入SDK接入</div><div class="line">2.通过Xcode断点接入</div><div class="line">3.通过导入framework接入</div></pre></td></tr></table></figure>
+<p>这里的第一种和最后一种都不太合适，对项目造成了侵入，所以我毫不犹豫选择了第二种，只需要添加一个断点，并简单配置一下就可以。</p>
+<h3 id="通过断点连接"><a href="#通过断点连接" class="headerlink" title="通过断点连接"></a>通过断点连接</h3><p>首先，打开Xcode，添加一个断点，如下：</p>
+<p><img src="http://om6homgqk.bkt.clouddn.com/断点.png" alt="添加断点"><br>然后编辑断点，配置成如下图所示：</p>
+<p><img src="http://om6homgqk.bkt.clouddn.com/编辑断点.png" alt="编辑断点"></p>
+<p><code>Debugger Command</code>下面一栏需要填上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expr (Class)NSClassFromString(@&quot;IBARevealLoader&quot;) == nil ? (void *)dlopen(&quot;/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer&quot;, 0x2) : ((void*)0)</div></pre></td></tr></table></figure>
+<p>这里需要注意如果你使用的是Reveal4，你可以使用这一段代码，如果是其他版本会不一样。<br>使用模拟器运行项目，打开Reveal，如果看到这种情况，那就成功一大步。</p>
+<p><img src="http://om6homgqk.bkt.clouddn.com/success.png" alt="关联成功图标"></p>
+<p>如果你很不幸，没有看到这个图标，也不要灰心，点击下面这个，会有官方提供的解决办法。</p>
+<p><img src="http://om6homgqk.bkt.clouddn.com/点击去官网.png" alt="官方解决问题"></p>
+<p>这里需要注意的是，不同的Reveal版本，点击后跳转的官方网页内容并不一样，连接方法稍有区别，仔细看官方的说明即可。<br><img src="http://om6homgqk.bkt.clouddn.com/reveal解决问题指导.png" alt="官方解决问题指导"></p>
+<p><img src="http://om6homgqk.bkt.clouddn.com/最后一个错误.png" alt="Hosts问题"></p>
+<p>如果你遇到了这个问题，说明你本机的hosts文件被更改了，可以使用<a href="https://github.com/oldj/SwitchHosts/downloads" target="_blank" rel="external">SwitchHosts</a>更改一下，如图。</p>
+<p><img src="http://om6homgqk.bkt.clouddn.com/hosts.png" alt="更改Hosts"><br>具体配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">127.0.0.1   localhost</div><div class="line">255.255.255.255 broadcasthost</div><div class="line">::1             localhost</div></pre></td></tr></table></figure>
+<p>具体的内容可以看一下<a href="http://www.cnblogs.com/fengtengfei/p/5100005.html" target="_blank" rel="external">这个博客</a>。上面说的这些可以连接模拟器，至于真机，Reveal4暂时没有发现使用断点连接的办法，Reveal7则可以，需要在项目中增加一段脚本。可以仔细阅读官网的<a href="http://support.revealapp.com/kb/getting-started/load-the-reveal-server-via-an-xcode-breakpoint" target="_blank" rel="external">Load the Reveal Server via an Xcode Breakpoint</a>，这篇文章是关于Reveal7的，跟上面所述会有些不同。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>最后，特别想吐槽一下Reveal，虽然好用，但是配置起来很闹心，各种踩坑，如果你遇到什么坑，一定要告诉我哦，祝大家踩坑愉快！</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -119,13 +141,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  <a class="article-category-link" href="/categories/Mac工具/">Mac工具</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/iOS/">iOS</a>
+  <span></span> <a href="/tags/Mac工具/">Mac工具</a>
   </div>
 
 </div>
@@ -134,7 +156,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://www.tengtai.tk/2017/02/28/2017-02-28-iOS中英文混合排序/" data-title="iOS中英文混合排序 | 光之晨曦" data-tsina="null" class="share clearfix">
+	  <div data-url="http://www.tengtai.tk/2017/03/04/2017-03-04-iOS开发神器Reveal使用指南/" data-title="iOS开发神器Reveal使用指南 | 光之晨曦" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -147,19 +169,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/03/04/2017-03-04-iOS开发神器Reveal使用指南/" title="iOS开发神器Reveal使用指南">
-  <strong>上一篇：</strong><br/>
-  <span>
-  iOS开发神器Reveal使用指南</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/01/23/2017-01-23-快速了解JavaScript中的函数/"  title="快速了解JavaScript中的函数">
+<a href="/2017/02/28/2017-02-28-iOS中英文混合排序/"  title="iOS中英文混合排序">
  <strong>下一篇：</strong><br/> 
- <span>快速了解JavaScript中的函数
+ <span>iOS中英文混合排序
 </span>
 </a>
 </div>
@@ -168,7 +182,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/02/28/2017-02-28-iOS中英文混合排序/" data-title="iOS中英文混合排序" data-url="http://www.tengtai.tk/2017/02/28/2017-02-28-iOS中英文混合排序/"></div>
+	<div class="ds-thread" data-thread-key="2017/03/04/2017-03-04-iOS开发神器Reveal使用指南/" data-title="iOS开发神器Reveal使用指南" data-url="http://www.tengtai.tk/2017/03/04/2017-03-04-iOS开发神器Reveal使用指南/"></div>
 </section>
 
 
@@ -178,7 +192,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#牛刀小试"><span class="toc-number">1.</span> <span class="toc-text">牛刀小试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发现问题"><span class="toc-number">2.</span> <span class="toc-text">发现问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渐入佳境"><span class="toc-number">3.</span> <span class="toc-text">渐入佳境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#守得云开见月明"><span class="toc-number">4.</span> <span class="toc-text">守得云开见月明</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接入自己项目"><span class="toc-number">2.</span> <span class="toc-text">接入自己项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过断点连接"><span class="toc-number">2.1.</span> <span class="toc-text">通过断点连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">3.</span> <span class="toc-text">最后</span></a></li></ol>
  
   </div>
 

@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://www.tengtai.tk/2015/06/20/2015-06-20-UIColor进制转换/index.html">
 <meta property="og:site_name" content="光之晨曦">
 <meta property="og:description" content="UIColor与十六进制字符串互转（整理）">
-<meta property="og:updated_time" content="2017-02-28T14:29:54.000Z">
+<meta property="og:updated_time" content="2017-03-05T04:15:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" UIColor与十六进制字符串互转（整理）">
 <meta name="twitter:description" content="UIColor与十六进制字符串互转（整理）">
@@ -100,7 +100,7 @@
 		
 		</div>
 		
-		<p>因为项目中用到了UIColor与十六进制字符串互转，于是就整理了一下，以供参阅。</p>
+		<p>因为项目中用到了UIColor与十六进制字符串互转，于是就整理了一下，以供参阅。<br><a id="more"></a></p>
 <h2 id="UIColor转十六进制字符串"><a href="#UIColor转十六进制字符串" class="headerlink" title="UIColor转十六进制字符串"></a>UIColor转十六进制字符串</h2><p>方法一：经过测试发现部分颜色会转化为#fffff（五个f），转化残缺导致最后颜色无法还原，不推荐使用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// UIColor转#ffffff格式的字符串</div><div class="line">+ (NSString *)hexFromUIColor:(UIColor *)color</div><div class="line">&#123;</div><div class="line">   if (CGColorGetNumberOfComponents(color.CGColor) &lt; 4) &#123;</div><div class="line">       const CGFloat *components = CGColorGetComponents(color.CGColor);</div><div class="line">       color = [UIColor colorWithRed:components[0]</div><div class="line">                               green:components[0]</div><div class="line">                                blue:components[0]</div><div class="line">                               alpha:components[1]];</div><div class="line">   &#125;</div><div class="line">    </div><div class="line">if (CGColorSpaceGetModel(CGColorGetColorSpace(color.CGColor)) != kCGColorSpaceModelRGB) &#123;</div><div class="line">   return [NSString stringWithFormat:@&quot;#FFFFFF&quot;];</div><div class="line">&#125;</div><div class="line">    </div><div class="line">return [NSString stringWithFormat:@&quot;#%x%x%x&quot;, (int)((CGColorGetComponents(color.CGColor))[0]*255.0),</div><div class="line">       (int)((CGColorGetComponents(color.CGColor))[1]*255.0),</div><div class="line">       (int)((CGColorGetComponents(color.CGColor))[2]*255.0)];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>方法二：完美转化为#ffffff格式，暂未发现问题，推荐使用。</p>
@@ -143,18 +143,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/08/03/2015-08-03-成员变量与属性/" title="成员变量与属性">
+ <a href="/2015/06/20/2015-06-20-Cell拖动/" title="iOS自定义长按手势，随意拖动Cell">
   <strong>上一篇：</strong><br/>
   <span>
-  成员变量与属性</span>
+  iOS自定义长按手势，随意拖动Cell</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/06/20/2015-06-20-Cell拖动/"  title="iOS自定义长按手势，随意拖动Cell">
+<a href="/2015/06/19/2015-06-20-Carthage/"  title="Cocoa新的依赖工具:Carthage">
  <strong>下一篇：</strong><br/> 
- <span>iOS自定义长按手势，随意拖动Cell
+ <span>Cocoa新的依赖工具:Carthage
 </span>
 </a>
 </div>
@@ -201,9 +201,7 @@
 		  
 		
 		  
-			<li><a href="/categories/Mac工具/" title="Mac工具">Mac工具<sup>1</sup></a></li>
-		  
-		
+			<li><a href="/categories/Mac工具/" title="Mac工具">Mac工具<sup>2</sup></a></li>
 		  
 		
 		  
@@ -224,11 +222,11 @@
 			
 		
 			
-				<li><a href="/tags/iOS工具/" title="iOS工具">iOS工具<sup>1</sup></a></li>
+				<li><a href="/tags/Mac工具/" title="Mac工具">Mac工具<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Mac工具/" title="Mac工具">Mac工具<sup>1</sup></a></li>
+				<li><a href="/tags/iOS工具/" title="iOS工具">iOS工具<sup>1</sup></a></li>
 			
 		
 			
@@ -237,8 +235,6 @@
 		
 			
 				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
-			
-		
 			
 		
 		</ul>
