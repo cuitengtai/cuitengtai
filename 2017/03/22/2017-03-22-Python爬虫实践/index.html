@@ -19,7 +19,7 @@
 <meta property="og:description" content="Python爬虫实践">
 <meta property="og:image" content="http://om6homgqk.bkt.clouddn.com/教程首页.png">
 <meta property="og:image" content="http://om6homgqk.bkt.clouddn.com/网页源码.png">
-<meta property="og:updated_time" content="2017-03-22T15:32:00.000Z">
+<meta property="og:updated_time" content="2017-03-22T15:38:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python爬虫实践">
 <meta name="twitter:description" content="Python爬虫实践">
@@ -113,7 +113,7 @@
 <p>在抓取前我们先看一下网页的源码，找到我们需要抓取的标签。如图：</p>
 <p><img src="http://om6homgqk.bkt.clouddn.com/网页源码.png" alt="网页源码"></p>
 <p>不难发现，上图的<code>&lt;ul&gt;</code>标签就是我们需要抓取的目标，也就是网页左侧的目录，我们需要的文章链接和标题都在这里。<br>OK！现在万事具备了，大致可以指定以下流程了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 获取整个html的内容；</div><div class="line">2. 从html中匹配出我们所需的文章链接及标题；</div><div class="line">3. 下载整个html或者是保存为PDF</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 获取整个html的内容；</div><div class="line">2. 从html中匹配出我们所需的文章链接及标题；</div><div class="line">3. 下载整个html或者是保存为PDF。</div></pre></td></tr></table></figure>
 <p>大致就是这个样子吧，至于步骤三如果下载html的话还需要下载整个页面的css文件，这里先只下载html吧。</p>
 <h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>为了完成步骤1，我们先编写一个根据url地址，获取网页内容的函数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">def url_open(url):</div><div class="line">    url = re.sub(r&apos;^//*&apos;, &apos;http://&apos;, url)</div><div class="line">    html = urllib.request.urlopen(url)</div><div class="line">    return html.read()</div></pre></td></tr></table></figure>
