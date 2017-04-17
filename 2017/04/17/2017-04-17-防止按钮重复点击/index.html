@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>成员变量与属性 | 光之晨曦</title>
+    <title>防止按钮重复点击 | 光之晨曦</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="tengtai">
     
 
-    <meta name="keywords" content="Carthage">
-    <meta name="description" content="成员变量与属性">
+    <meta name="keywords" content="防止按钮重复点击">
+    <meta name="description" content="防止按钮重复点击">
 <meta property="og:type" content="article">
-<meta property="og:title" content="成员变量与属性">
-<meta property="og:url" content="http://www.tengtai.tk/2015/08/03/2015-08-03-成员变量与属性/index.html">
+<meta property="og:title" content="防止按钮重复点击">
+<meta property="og:url" content="http://www.tengtai.tk/2017/04/17/2017-04-17-防止按钮重复点击/index.html">
 <meta property="og:site_name" content="光之晨曦">
-<meta property="og:description" content="成员变量与属性">
-<meta property="og:updated_time" content="2017-03-05T04:17:38.000Z">
+<meta property="og:description" content="防止按钮重复点击">
+<meta property="og:updated_time" content="2017-04-17T08:41:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="成员变量与属性">
-<meta name="twitter:description" content="成员变量与属性">
+<meta name="twitter:title" content="防止按钮重复点击">
+<meta name="twitter:description" content="防止按钮重复点击">
 
     
     <link rel="alternative" href="/atom.xml" title="光之晨曦" type="application/atom+xml">
@@ -80,14 +80,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/08/03/2015-08-03-成员变量与属性/" title="成员变量与属性" itemprop="url">成员变量与属性</a>
+      <a href="/2017/04/17/2017-04-17-防止按钮重复点击/" title="防止按钮重复点击" itemprop="url">防止按钮重复点击</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="tengtai" target="_blank" itemprop="author">tengtai</a>
 		
   <p class="article-time">
-    <time datetime="2015-08-02T16:00:00.000Z" itemprop="datePublished"> Published 2015-08-03</time>
+    <time datetime="2017-04-16T16:00:00.000Z" itemprop="datePublished"> Published 2017-04-17</time>
     
   </p>
 </header>
@@ -96,16 +96,19 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性"><span class="toc-number">2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">3.</span> <span class="toc-text">说明</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">2.</span> <span class="toc-text">最后</span></a></li></ol>
 		
 		</div>
 		
-		<p>最近在公司的项目里面发现了很多类成员变量与属性同时出现，感觉很混乱，之前一直是在用属性<code>@property</code>声明变量，所以对两者之间的区别比较困惑，于是便仔细的探索了一番。<br><a id="more"></a></p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>先来看一看那些让人感觉乱糟糟的成员变量与属性共用的代码吧。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@interface SearchInfoView()&lt;UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,SearchCellDelegate&gt; </div><div class="line">&#123;</div><div class="line">    UIImageView *_backGroundImg;</div><div class="line">    NSMutableArray *_oldSearchArray; </div><div class="line">    UIButton *_rightBtn;</div><div class="line">&#125;</div><div class="line">@property(nonatomic, strong)UITableView *historyTableView;</div><div class="line">@property(nonatomic, assign)UIViewController *currentViewControll;</div><div class="line">@end</div></pre></td></tr></table></figure></p>
-<p>真的很乱，对于我来说真的是无法忍受，但是他们之间到底有何不同呢？</p>
-<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>先来说一下属性<code>@property</code>，属性可以自己生成<code>getter</code>和<code>setter</code>方法，并生成一个待下划线的成员变量，当然你还可以通过<code>@synthesize</code>关键字将实例变量重命名。在ARC下对象的存在与否全看有没有强指针的引用，我们无需去考虑计数器了，配合一些如：<code>strong</code>, <code>weak</code>, <code>rassign</code>等关键字，我们不用再去太关心内存。</p>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>iOS 5更新之后，苹果是建议以以下的方式来使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@interface MyViewController :UIViewController</div><div class="line">@property (nonatomic, retain) UIButton *myButton;</div><div class="line">@end</div></pre></td></tr></table></figure></p>
-<p>我看了一些著名的开源框架如：<code>AFNetworking</code>以及苹果官方代码来看，基本上很少使用成员变量了，所以我们平时尽可能的使用<code>@property</code>，在使用时还是很方便的。</p>
+		<blockquote>
+<p>在iOS开发中为了防止按钮被重复点击可以使用loading动画增加蒙层遮挡，或者是延迟按钮事件的响应时间。<br><a id="more"></a></p>
+</blockquote>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>参考了<a href="http://www.cocoachina.com/ios/20150911/13260.html" target="_blank" rel="external">这篇文章</a>的解决方案，这篇文章的解决思路是在分类中添加关联对象，并对系统方法进行拦截。具体实现是使用<code>runtime</code>手动拦截<code>UIControl</code>的<code>sendAction:to:forEvent:</code>方法，并进行方法交换，关键代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (void)tt_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event</div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;%@&quot;, [NSRunLoop currentRunLoop].currentMode);</div><div class="line">    if (self.tt_ignoreEvent) return;</div><div class="line">    if (self.tt_acceptDelayInterval &gt; 0) &#123;</div><div class="line">        self.tt_ignoreEvent = YES;</div><div class="line">        [self performSelector:@selector(setTt_ignoreEvent:) withObject:@(NO)    afterDelay:self.tt_acceptDelayInterval];</div><div class="line">    &#125;</div><div class="line">    [self tt_sendAction:action to:target forEvent:event];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是这样写却存在很大的问题，代码在<code>Debug</code>模式下运行正常，能很好地完成防止按钮被连续点击，但是在<code>Release</code>模式下，按钮只能被点击一次就一直被阻断，也就是<code>tt_ignoreEvent</code>属性在定时器中并没有被正确的置为<code>NO</code>，经过断点调试，关联对象的set方法确实是延后执行了，但是并没有赋值成功，这让人很是不解，后来我使用GCD的dispatch_after，然后一切就正常了🙃…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (void)tt_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event</div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;%@&quot;, [NSRunLoop currentRunLoop].currentMode);</div><div class="line">    if (self.tt_ignoreEvent) return;</div><div class="line">    if (self.tt_acceptDelayInterval &gt; 0) &#123;</div><div class="line">        self.tt_ignoreEvent = YES;</div><div class="line">        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.tt_acceptDelayInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</div><div class="line">            self.tt_ignoreEvent = NO;</div><div class="line">        &#125;);</div><div class="line">    [self tt_sendAction:action to:target forEvent:event];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>至此，这个防止重复点击的问题是解决了，但是为什么使用<code>performSelector</code>不行，至今仍没有头绪。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>如果你知道为什么，请一定要告诉我。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -128,7 +131,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://www.tengtai.tk/2015/08/03/2015-08-03-成员变量与属性/" data-title="成员变量与属性 | 光之晨曦" data-tsina="null" class="share clearfix">
+	  <div data-url="http://www.tengtai.tk/2017/04/17/2017-04-17-防止按钮重复点击/" data-title="防止按钮重复点击 | 光之晨曦" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -141,19 +144,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/08/05/2015-08-05-快把你的bash换掉吧/" title="快把你的bash换掉吧">
-  <strong>上一篇：</strong><br/>
-  <span>
-  快把你的bash换掉吧</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/08/03/2015-08-03-weakSelf与strongSelf/"  title="weakSelf与strongSelf">
+<a href="/2017/04/01/2017-04-01-打造一个可控频率的定时器/"  title="打造一个可控频率的定时器">
  <strong>下一篇：</strong><br/> 
- <span>weakSelf与strongSelf
+ <span>打造一个可控频率的定时器
 </span>
 </a>
 </div>
@@ -162,7 +157,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/08/03/2015-08-03-成员变量与属性/" data-title="成员变量与属性" data-url="http://www.tengtai.tk/2015/08/03/2015-08-03-成员变量与属性/"></div>
+	<div class="ds-thread" data-thread-key="2017/04/17/2017-04-17-防止按钮重复点击/" data-title="防止按钮重复点击" data-url="http://www.tengtai.tk/2017/04/17/2017-04-17-防止按钮重复点击/"></div>
 </section>
 
 
@@ -172,7 +167,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性"><span class="toc-number">2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">3.</span> <span class="toc-text">说明</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">2.</span> <span class="toc-text">最后</span></a></li></ol>
  
   </div>
 
