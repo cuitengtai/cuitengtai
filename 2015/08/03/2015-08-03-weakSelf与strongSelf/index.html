@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://www.tengtai.tk/2015/08/03/2015-08-03-weakSelf与strongSelf/index.html">
 <meta property="og:site_name" content="光之晨曦">
 <meta property="og:description" content="weakSelf与strongSelf">
-<meta property="og:updated_time" content="2017-06-26T06:28:57.000Z">
+<meta property="og:updated_time" content="2017-06-26T06:34:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weakSelf与strongSelf">
 <meta name="twitter:description" content="weakSelf与strongSelf">
@@ -48,7 +48,7 @@
 				<h1 class="site-name"><a href="/" title="光之晨曦">光之晨曦</a></h1>
 				<h2 class="blog-motto">The code is artwork and needs to be polished slowly.</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -64,7 +64,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:www.tengtai.tk">
 					</form>
 					
@@ -87,16 +87,16 @@
 		<a href="/about" title="tengtai" target="_blank" itemprop="author">tengtai</a>
 		
   <p class="article-time">
-    <time datetime="2015-08-02T16:00:00.000Z" itemprop="datePublished"> 发表于 2015-08-03</time>
+    <time datetime="2015-08-02T16:00:00.000Z" itemprop="datePublished"> Published 2015-08-03</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#weakSelf"><span class="toc-number">1.</span> <span class="toc-text">weakSelf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strongSelf"><span class="toc-number">2.</span> <span class="toc-text">strongSelf</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#weakSelf"><span class="toc-number">1.</span> <span class="toc-text">weakSelf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strongSelf"><span class="toc-number">2.</span> <span class="toc-text">strongSelf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#举个栗子"><span class="toc-number">3.</span> <span class="toc-text">举个栗子</span></a></li></ol>
 		
 		</div>
 		
@@ -110,7 +110,7 @@
 <p>为什么需要去使用<code>strongSelf</code>？用<code>weakSelf</code>不是就可以打破循环引用吗？这是因为weak属性修饰的变量不持有对象，随时都有可能被置为nil,而strong属性修饰的变量则持有对象，对象只有在引用计数变为0才会销毁，或者是没有其他对象持有它才会被销毁。这样加入我在block里面有这样的操作：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">__weak __typeof(self)weakSelf = self;</div><div class="line">AFNetworkReachabilityStatusBlock callback = ^(AFNetworkReachabilityStatus status) &#123;</div><div class="line">   if (weakSelf.networkReachabilityStatusBlock) &#123; // 1</div><div class="line">       weakSelf.networkReachabilityStatusBlock(status); // 2</div><div class="line">   &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>这里假设在执行<code>1</code>的时候<code>self</code>不为<code>nil</code>,即<code>weakSelf</code>不为<code>nil</code>,这时执行<code>2</code>，如果恰巧<code>weakSelf</code>为<code>nil</code>，那么程序就会崩溃，这种情况是不能接受的，所以在<code>block</code>里面多次使用<code>weakSelf</code>是不安全的，如果使用<code>strongSelf</code>，只要<code>block</code>开始执行的时候<code>self</code>不为<code>nil</code>,那么直到<code>block</code>执行完毕，<code>self</code>都不可能为<code>nil</code>，在<code>block</code>作用域结束后，<code>strongSelf</code>自动销毁，完全达到我们的要求。</p>
-<p>##举个栗子<br>下面来看一个例子。</p>
+<h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><p>下面来看一个例子。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">// 声明一个block</div><div class="line">Complete complete;</div><div class="line">&#123;</div><div class="line">   // 创建一个view</div><div class="line">   UIView *view = [[UIView alloc] init];</div><div class="line">   // 1</div><div class="line">   NSLog(@&quot;%@---%p&quot;, view, &amp;view);</div><div class="line">   // 声明一个弱引用的view</div><div class="line">   __weak __typeof(view) weakView = view;</div><div class="line">   // 2</div><div class="line">   NSLog(@&quot;%@---%p&quot;, weakView, &amp;weakView);</div><div class="line">   // 定义block</div><div class="line">   complete = ^()&#123;</div><div class="line">       // 3 </div><div class="line">       NSLog(@&quot;%@---%p&quot;, weakView, &amp;weakView);</div><div class="line">       // 声明一个强引用的view</div><div class="line">       __strong __typeof(view) strongView = weakView;</div><div class="line">       // 4</div><div class="line">       NSLog(@&quot;%@---%p&quot;, strongView, &amp;strongView);</div><div class="line">   &#125;;</div><div class="line">   complete();</div><div class="line">&#125;</div><div class="line">complete();</div></pre></td></tr></table></figure>
 <p>整理一下最终的打印结果如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">0x7fa4c4f096e0---0x7fff4fe039d0</div><div class="line">0x7fa4c4f096e0---0x7fff4fe039c8</div><div class="line">0x7fa4c4f096e0---0x60000005f790</div><div class="line">0x7fa4c4f096e0---0x7fff4fe038c8</div><div class="line">(null)---0x60000005f790</div><div class="line">(null)---0x7fff4fe038c8</div></pre></td></tr></table></figure>
@@ -176,22 +176,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#weakSelf"><span class="toc-number">1.</span> <span class="toc-text">weakSelf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strongSelf"><span class="toc-number">2.</span> <span class="toc-text">strongSelf</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#weakSelf"><span class="toc-number">1.</span> <span class="toc-text">weakSelf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strongSelf"><span class="toc-number">2.</span> <span class="toc-text">strongSelf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#举个栗子"><span class="toc-number">3.</span> <span class="toc-text">举个栗子</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -216,7 +216,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -248,7 +248,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
     </ul>
@@ -258,11 +258,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -503,7 +503,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
